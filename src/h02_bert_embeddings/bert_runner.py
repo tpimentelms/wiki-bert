@@ -62,8 +62,6 @@ class BertEmbeddingsGetter(object):
             embeddings += self.bert.process_batch(batch)
 
             if processed_size >= self.dump_size:
-                import ipdb; ipdb.set_trace()
-                print([x['embeddings'].shape for x in embeddings])
                 self.write_results(embeddings, tgt_path)
                 embeddings = []
                 processed_size = 0
@@ -94,10 +92,6 @@ class BertEmbeddingsGetter(object):
                 yield tokens
 
     def write_results(self, results, tgt_path):
-        # results = {key: np.matrix(values) for key, values in results.items()}
-        #     self._write_results(results, tgt_path)
-
-        # def _write_results(self, results, tgt_path):
         fname = 'results--%05d.pickle' % \
             (self.dump_id)
         tqdm.write("\tSaving partial results: %s" % fname)

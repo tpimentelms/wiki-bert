@@ -15,9 +15,9 @@ WIKI_WORDS_FILE := $(DATA_DIR)/tgt_words.pickle
 
 EMB_DIR_BASE := embeddings/
 EMB_DIR := $(EMB_DIR_BASE)/$(LANGUAGE)/
-EMB_RAW_DIR := $(EMB_DIR)raw/
-EMB_RAW_DONE := $(EMB_DIR)raw.done.txt
-EMB_MERG_DIR := $(EMB_DIR)merged/
+EMB_RAW_DIR := $(EMB_DIR)sentences/
+EMB_RAW_DONE := $(EMB_DIR)done.txt
+# EMB_MERG_DIR := $(EMB_DIR)merged/
 
 
 full: get_embeddings
@@ -37,11 +37,11 @@ clean:
 	rm $(WIKI_SHUFFLED_FILE)
 	rm $(WIKI_WORDS_FILE)
 
-$(EMB_MERG_DIR):
-	echo 'Merge embeddings' $(EMB_MERG_DIR)
-	mkdir -p $(EMB_MERG_DIR)
-	python src/h02_bert_embeddings/merge_embeddings_per_word.py --dump-size 20 --n-chars-filesystem $(N_CHARS_FILESYSTEM) \
-		--embeddings-raw-path $(EMB_RAW_DIR)  --embeddings-merged-path $(EMB_MERG_DIR)
+# $(EMB_MERG_DIR):
+# 	echo 'Merge embeddings' $(EMB_MERG_DIR)
+# 	mkdir -p $(EMB_MERG_DIR)
+# 	python src/h02_bert_embeddings/merge_embeddings_per_word.py --dump-size 20 --n-chars-filesystem $(N_CHARS_FILESYSTEM) \
+# 		--embeddings-raw-path $(EMB_RAW_DIR)  --embeddings-merged-path $(EMB_MERG_DIR)
 
 # Get Bert embeddings per word
 $(EMB_RAW_DONE): | $(WIKI_SHUFFLED_FILE)
