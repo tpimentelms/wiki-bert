@@ -5,7 +5,7 @@ Code to get embeddings from wikipedia with BERT
 
 To install dependencies run:
 ```bash
-$ conda env create -f environment.yml
+$ conda env create -f config/environment.yml
 ```
 
 And then install the appropriate version of pytorch, transformers and download spacy dependencies:
