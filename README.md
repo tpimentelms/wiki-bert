@@ -22,19 +22,7 @@ Then put the `parsed.txt` files in path `data/<language-name>/wiki.txt`.
 
 # Get embeddings
 
-Get the embeddings:
-```bash
-$ make get_embeddings LANGUAGE=id
-```
-
-Merge embeddings per word and get their covariances:
-```bash
-$ make merge_embeddings LANGUAGE=id
-```
-
-# Make script for a language
-
-Use the Makefile to do all steps above at once!
+Use the Makefile to get a language's embeddings:
 ```bash
 $ make LANGUAGE=id
 ```
