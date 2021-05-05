@@ -6,7 +6,7 @@ import torch
 
 sys.path.append('./src/')
 # from h01_bert_embeddings.bert import BertProcessor
-from h02_bert_embeddings.bert_runner import BertEmbeddingsGetter
+from bert_runner import BertEmbeddingsGetter
 from utils import argparser as parser
 from utils import utils
 

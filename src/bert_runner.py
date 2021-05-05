@@ -8,7 +8,7 @@ import torch.nn as nn
 from torch.functional import F
 from transformers import BertTokenizer
 
-from h02_bert_embeddings.bert import BertProcessor
+from model.bert import BertProcessor
 from utils import constants
 from utils import utils
 

@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 from transformers import BertTokenizer
 
-from h02_bert_embeddings.bert_per_word import BertPerWordModel
+from .bert_per_word import BertPerWordModel
 from utils import constants
 # from utils import utils
 # from .ud import UdProcessor
