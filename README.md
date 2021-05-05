@@ -1,6 +1,10 @@
 # wiki-bert
 Code to get embeddings from wikipedia with BERT
 
+
+[![CircleCI](https://circleci.com/gh/tpimentelms/wiki-bert.svg?style=svg&circle-token=c7f8daf57faceb1397d9f5020e1bff13063da591)](https://circleci.com/gh/tpimentelms/wiki-bert)
+
+
 ## Install
 
 To install dependencies run:
