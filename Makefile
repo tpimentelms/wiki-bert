@@ -46,7 +46,7 @@ clean:
 # Get Bert embeddings per word
 $(EMB_RAW_DONE): | $(WIKI_SHUFFLED_FILE)
 	mkdir -p $(EMB_RAW_DIR)
-	python src/h02_bert_embeddings/get_bert_embeddings.py --dump-size 5000 --batch-size 128 \
+	python src/get_bert_embeddings.py --dump-size 5000 --batch-size 128 \
 		--wikipedia-tokenized-file $(WIKI_SHUFFLED_FILE) --embeddings-raw-path $(EMB_RAW_DIR)
 	touch $(EMB_RAW_DONE)
 
