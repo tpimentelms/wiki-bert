@@ -61,7 +61,7 @@ source ~/.bashrc
 conda activate wiki-bert
 
 #! Run options for the application:
-options=" LANGUAGE=${LANGUAGE} MODEL=${MODEL} DATASET=${DATASET} PER_WORD=${PER_WORD}"
+options=" LANGUAGE=${LANGUAGE}"
 
 #! Work directory (i.e. where the job will run):
 workdir="$SLURM_SUBMIT_DIR"  # The value of SLURM_SUBMIT_DIR sets workdir to the directory
