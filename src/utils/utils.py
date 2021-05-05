@@ -1,12 +1,8 @@
-import bz2
 import pickle
 from os import listdir, path
 import pathlib
 import numpy as np
 import torch
-import homoglyphs as hg
-
-from utils import constants
 
 
 def get_filenames(filepath):
@@ -42,22 +38,8 @@ def get_n_lines(fname):
     return count
 
 
-def get_alphabet(language):
-    try:
-        alphabet = hg.Languages.get_alphabet([language])
-    except ValueError:
-        if constants.scripts[language] is not None:
-            alphabet = hg.Categories.get_alphabet(
-                [x.upper() for x in constants.scripts[language]]
-            )
-        else:
-            alphabet = None
-
-    return alphabet
-
-
 def is_word(token, alphabet):
-    return all([x in alphabet for x in token])
+    return all(x in alphabet for x in token)
 
 
 def config(seed):

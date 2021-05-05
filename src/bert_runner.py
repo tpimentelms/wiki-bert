@@ -1,19 +1,14 @@
-import math
 from os import path
 import logging
 from tqdm import tqdm
-import numpy as np
 import torch
-import torch.nn as nn
-from torch.functional import F
-from transformers import BertTokenizer
 
 from model.bert import BertProcessor
 from utils import constants
 from utils import utils
 
 
-class BertEmbeddingsGetter(object):
+class BertEmbeddingsGetter:
     def __init__(self, bert_option, batch_size, dump_size, tgt_words=None):
         self.bert_option = bert_option
         self.batch_size = batch_size

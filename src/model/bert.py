@@ -4,10 +4,8 @@ import torch
 import torch.nn as nn
 from transformers import BertTokenizer
 
-from .bert_per_word import BertPerWordModel
 from utils import constants
-# from utils import utils
-# from .ud import UdProcessor
+from .bert_per_word import BertPerWordModel
 
 
 class BertProcessor:
@@ -84,7 +82,8 @@ class BertProcessor:
             # import ipdb; ipdb.set_trace()
 
             if self.tgt_words is not None:
-                sentence_filtered, sentence_embeddings = self.filter_tgt_words(sentence, sentence_embeddings)
+                sentence_filtered, sentence_embeddings = \
+                    self.filter_tgt_words(sentence, sentence_embeddings)
 
             results += [{
                 'sentence': sentence,
@@ -103,7 +102,8 @@ class BertProcessor:
                 continue
 
             mask[j, :] = 1
-            sentence_embeddings = sentence_embeddings[mask.bool()].reshape(-1, sentence_embeddings.shape[-1])
+            sentence_embeddings = sentence_embeddings[mask.bool()] \
+                .reshape(-1, sentence_embeddings.shape[-1])
 
         return sentence_filtered, sentence_embeddings
 

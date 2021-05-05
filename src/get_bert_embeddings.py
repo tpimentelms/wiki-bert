@@ -2,21 +2,13 @@
 import sys
 from os import path
 import logging
-import torch
 
 sys.path.append('./src/')
-# from h01_bert_embeddings.bert import BertProcessor
 from bert_runner import BertEmbeddingsGetter
 from utils import argparser as parser
-from utils import utils
 
 
 def process(src_file, tgt_path, bert_option, batch_size, dump_size):
-    # embeddings = {}
-    # batch = [['Hello', 'how', 'are', 'you', '?'], ['I', '\'m', 'fine', '!']]
-    # bert_runner = BertProcessor(bert_option)
-    # bert_runner.process_batch(batch, embeddings)
-    # import ipdb; ipdb.set_trace()
     bert_runner = BertEmbeddingsGetter(bert_option, batch_size, dump_size)
     bert_runner.get_embeddings(src_file, tgt_path)
 
@@ -27,10 +19,6 @@ def check_args(args):
         logging.error("Tokenized wikipedia file not found: %s", args.wikipedia_tokenized_file)
         sys.exit()
 
-    # if not path.isfile(args.wikipedia_words_file):
-    #     logging.error("Wikipedia words file not found: %s", args.wikipedia_words_file)
-    #     sys.exit()
-
     # Check the output folder exist
     if not path.isdir(args.embeddings_raw_path):
         logging.error("Output filename directory does not exist: %s", args.embeddings_raw_path)
@@ -38,9 +26,10 @@ def check_args(args):
 
     # Sanity check the BERT model
     if args.bert not in {'bert-base-uncased', 'bert-large-uncased', 'bert-base-cased',
-                         'bert-large-cased', 'bert-base-multilingual-cased', 'bert-base-chinese',
-                         'bert-base-german-cased'}:
-        logging.error("Invalid BERT model. See https://huggingface.co/transformers/pretrained_models.html")
+                         'bert-large-cased', 'bert-base-multilingual-cased',
+                         'bert-base-chinese', 'bert-base-german-cased'}:
+        logging.error(
+            "Invalid BERT model. See https://huggingface.co/transformers/pretrained_models.html")
         sys.exit()
 
 
@@ -50,7 +39,6 @@ def main():
 
     check_args(args)
 
-    # tgt_words = utils.read_pickle(args.wikipedia_words_file)
     process(args.wikipedia_tokenized_file, args.embeddings_raw_path,
             args.bert, args.batch_size, args.dump_size)
 
